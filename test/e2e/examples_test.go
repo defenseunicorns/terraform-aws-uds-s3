@@ -1,9 +1,9 @@
 package test
 
 import (
-  "testing"
+	"testing"
 
-  "github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -14,29 +14,27 @@ const bucketNameOutput = "bucket_id"
 const testDir = "../examples/complete"
 
 func TestExampleComplete(t *testing.T) {
-  t.Parallel()
+	t.Parallel()
 
-  expectedBucketPrefix := "udss3tst-"
-  expectedOidcProviderArn := "arn:aws:iam::111111111111:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/22222222222222222222222222222222"
+	expectedBucketPrefix := "udss3tst-"
+	expectedOidcProviderArn := "arn:aws:iam::111111111111:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/22222222222222222222222222222222"
 
-  terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-    TerraformDir: testDir,
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: testDir,
 
-    Vars: map[string]interface{}{
-      bucketNamePrefixVar: expectedBucketPrefix,
-      oidcProviderVar: expectedOidcProviderArn,
-    },
+		Vars: map[string]interface{}{
+			bucketNamePrefixVar: expectedBucketPrefix,
+			oidcProviderVar:     expectedOidcProviderArn,
+		},
 
-    NoColor: true,
-  })
+		NoColor: true,
+	})
 
-  defer terraform.Destroy(t, terraformOptions)
+	defer terraform.Destroy(t, terraformOptions)
 
-  terraform.InitAndApply(t, terraformOptions)
+	terraform.InitAndApply(t, terraformOptions)
 
-  actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
+	actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
 
-  assert.Contains(t, actualBucketName, expectedBucketPrefix)
+	assert.Contains(t, actualBucketName, expectedBucketPrefix)
 }
-
-															  
