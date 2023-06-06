@@ -1,0 +1,11 @@
+* @defenseunicorns/iac @defenseunicorns/uds
+
+# Privileged Files
+/CODEOWNERS @defenseunicorns/iac-admin @defenseunicorns/iac
+/LICENSE @defenseunicorns/iac-admin @defenseunicorns/iac
+/.github/ @defenseunicorns/iac-admin @defenseunicorns/iac
+/.gitignore @defenseunicorns/iac-admin @defenseunicorns/iac
+/renovate.json @defenseunicorns/iac-admin @defenseunicorns/iac
+/renovate.json5 @defenseunicorns/iac-admin @defenseunicorns/iac
+/Makefile @defenseunicorns/iac-admin @defenseunicorns/iac
+

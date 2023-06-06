@@ -1,0 +1,12 @@
+name: Test Workflows
+on:
+  push:
+    branches:
+      - main
+jobs:
+  version-zarf-package:
+    name: Version Zarf Package
+    uses: defenseunicorns/uds-common-workflows/.github/workflows/release-version.yaml@release
+    secrets: inherit
+    with:
+      working-dir: test1
