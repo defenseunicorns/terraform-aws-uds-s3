@@ -27,20 +27,20 @@ const testDir = "../../examples/complete"
 
 // These structs are used to decode the IAM Role Policy Document from JSON.
 type PolicyDocument struct {
-	Version   string
-	Statement []PolicyDocumentStatement
+	Version   string                    `json:"version"`
+	Statement []PolicyDocumentStatement `json:"statement"`
 }
 
 type PolicyDocumentStatement struct {
-	Sid       string
-	Effect    string
-	Principal PolicyDocumentStatementPrincipal
-	Action    string
-	Condition string
+	Sid       string                           `json:"sid"`
+	Effect    string                           `json:"effect"`
+	Principal PolicyDocumentStatementPrincipal `json:"principal"`
+	Action    string                           `json:"action"`
+	Condition string                           `json:"condition"`
 }
 
 type PolicyDocumentStatementPrincipal struct {
-	Federated string
+	Federated string `json:"federated"`
 }
 
 func TestExampleComplete(t *testing.T) {
