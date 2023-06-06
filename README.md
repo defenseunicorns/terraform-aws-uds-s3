@@ -1,6 +1,6 @@
 # UDS AWS S3
 
-This module is provide a bucket for the needs of UDS. While the original intent is create a reusable module, the existance of this may become more specilized over time. 
+This module is provide a bucket for the needs of UDS. While the original intent is create a reusable module, the existance of this may become more specilized over time.
 
 
 <!-- BEGIN_TF_DOCS -->
@@ -62,4 +62,3 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="output_irsa_role"></a> [irsa\_role](#output\_irsa\_role) | ARN of the IRSA Role |
 | <a name="output_s3_bucket"></a> [s3\_bucket](#output\_s3\_bucket) | S3 Bucket Name |
 <!-- END_TF_DOCS -->
-
