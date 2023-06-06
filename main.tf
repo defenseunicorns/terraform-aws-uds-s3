@@ -114,9 +114,9 @@ module "irsa" {
     }
   }
 
-  role_path                      = var.irsa_iam_role_path
-  force_detach_policies          = true
-  role_permissions_boundary_arn  = var.irsa_iam_permissions_boundary_arn
+  role_path                     = var.irsa_iam_role_path
+  force_detach_policies         = true
+  role_permissions_boundary_arn = var.irsa_iam_permissions_boundary_arn
 
   tags = var.tags
 }

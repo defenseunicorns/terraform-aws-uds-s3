@@ -32,13 +32,14 @@ variable "eks_oidc_provider_arn" {
   default     = ""
 }
 
-variable "kms_key_arn" {
-  description = "KMS key ARN."
-  type        = string
-  default     = ""
-}
+# variable "kms_key_arn" {
+#   description = "KMS key ARN."
+#   type        = string
+#   default     = ""
+# }
 
 variable "force_destroy" {
   description = "Whether or not to destroy items in the bucket when removing the bucket."
+  type        = bool
   default     = true
 }
