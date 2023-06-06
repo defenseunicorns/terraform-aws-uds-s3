@@ -1,40 +1,93 @@
 package test
 
 import (
-	"testing"
+  "encoding/json"
+  "fmt"
+  "net/url"
+  "testing"
 
-	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/stretchr/testify/assert"
+  a "github.com/aws/aws-sdk-go/aws"
+  "github.com/aws/aws-sdk-go/service/iam"
+  "github.com/gruntwork-io/terratest/modules/aws"
+  "github.com/gruntwork-io/terratest/modules/terraform"
+  "github.com/stretchr/testify/assert"
 )
 
+const expectedBucketPrefix = "terratest-bucket-"
 const bucketNamePrefixVar = "name_prefix"
-const oidcProviderVar = "eks_oidc_provider_arn"
 const bucketNameOutput = "bucket_id"
 
-const testDir = "../examples/complete"
+const oidcProviderVar = "eks_oidc_provider_arn"
+const awsRegionVar = "region"
+
+const expectedRoleName = "terratest-irsa-role"
+const roleNameVar = "irsa_iam_role_name"
+
+const testDir = "../../examples/complete"
+
+// These structs are used to decode the IAM Role Policy Document from JSON.
+type PolicyDocument struct {
+  Version string
+  Statement []PolicyDocumentStatement
+}
+
+type PolicyDocumentStatement struct {
+  Sid string
+  Effect string
+  Principal PolicyDocumentStatementPrincipal
+  Action string
+  Condition string
+}
+
+type PolicyDocumentStatementPrincipal struct {
+  Federated string
+}
 
 func TestExampleComplete(t *testing.T) {
-	t.Parallel()
+  t.Parallel()
 
-	expectedBucketPrefix := "udss3tst-"
-	expectedOidcProviderArn := "arn:aws:iam::111111111111:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/22222222222222222222222222222222"
+  awsRegion := aws.GetRandomStableRegion(t, nil, nil)
 
-	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: testDir,
+  expectedOidcProviderArn := fmt.Sprintf("arn:aws:iam::111111111111:oidc-provider/oidc.eks.%s.amazonaws.com/id/22222222222222222222222222222222", awsRegion)
 
-		Vars: map[string]interface{}{
-			bucketNamePrefixVar: expectedBucketPrefix,
-			oidcProviderVar:     expectedOidcProviderArn,
-		},
+  terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+    TerraformDir: testDir,
 
-		NoColor: true,
-	})
+    Vars: map[string]interface{}{
+      bucketNamePrefixVar: expectedBucketPrefix,
+      oidcProviderVar: expectedOidcProviderArn,
+      awsRegionVar: awsRegion,
+      roleNameVar: expectedRoleName,
+    },
 
-	defer terraform.Destroy(t, terraformOptions)
+    NoColor: true,
+  })
 
-	terraform.InitAndApply(t, terraformOptions)
+  defer terraform.Destroy(t, terraformOptions)
 
-	actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
+  terraform.InitAndApply(t, terraformOptions)
 
-	assert.Contains(t, actualBucketName, expectedBucketPrefix)
+  // Verify bucket name
+  actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
+  assert.Contains(t, actualBucketName, expectedBucketPrefix)
+
+  // Verify OIDC ARN of the Role
+  iamClient := aws.NewIamClient(t, awsRegion)
+  expectedRoleNameCopy := expectedRoleName // because we can't address a constant
+  // 1. Get IRSA Role
+  iamRoleOutput, err := iamClient.GetRole(&iam.GetRoleInput{
+    RoleName: &expectedRoleNameCopy,
+  })
+  assert.Nil(t, err)
+
+  // 2. Extract and decode assume role policy document
+  policyDoc := a.StringValue(iamRoleOutput.Role.AssumeRolePolicyDocument)
+  decodedPolicyDoc, _ := url.PathUnescape(policyDoc)
+
+  var policyStruct PolicyDocument
+  _ = json.Unmarshal([]byte(decodedPolicyDoc), &policyStruct)
+
+  // 3. Pull out OIDC ARN using the structs at the top and assert
+  actualOidcProviderArn := policyStruct.Statement[0].Principal.Federated
+  assert.Equal(t, actualOidcProviderArn, expectedOidcProviderArn)
 }
