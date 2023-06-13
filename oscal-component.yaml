@@ -118,4 +118,4 @@ component-definition:
     - uuid: 661fe0e1-3a84-4e38-b302-ea0fac8d2403
       title: Terraform AWS S3 UDS
       rlinks:
-      - href: https://github.com/defenseunicorns/terraform-aws-uds-s3
+       - href: https://github.com/defenseunicorns/terraform-aws-uds-s3
