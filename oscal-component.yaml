@@ -1,6 +1,6 @@
 component-definition:
   uuid: 2e3ed43b-13d9-44b4-8647-f518044ee6c4
-  metadata: 
+  metadata:
     title: Terraform S3 Bucket Module
     last-modified: '2023-06-13T19:21:27Z'
     version: "20230613"
@@ -12,7 +12,7 @@ component-definition:
       links:
       - href: https://defenseunicorns.com
         rel: website
-  components: 
+  components:
   - uuid: 90fec05f-1303-4de4-8b9b-edd5fbe08b27
     type: software
     title: Terraform AWS S3 UDS
@@ -46,7 +46,7 @@ component-definition:
         description: >-
           Access to S3 Bucket is controlled by RBAC AWS IAM Roles. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
       - uuid: e9d0185f-9184-4d62-9426-98a5dcc9f
-        control-id: ac-6.5    
+        control-id: ac-6.5
         description: >-
           Access to S3 Bucket is controlled by RBAC AWS IAM Roles. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
       - uuid: f2bc7371-14ae-4e32-97e0-e76de5ec1227
@@ -113,7 +113,7 @@ component-definition:
         control-id: sc-28.1
         description: >-
           Encryption is enabled and uses AWS KMS to create and manage the cryptographic key. https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
-  back-matter: 
+  back-matter:
     resources:
     - uuid: 661fe0e1-3a84-4e38-b302-ea0fac8d2403
       title: Terraform AWS S3 UDS
