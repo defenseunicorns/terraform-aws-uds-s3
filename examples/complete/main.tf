@@ -6,6 +6,7 @@ module "bucket" {
   source = "../../"
 
   name_prefix                       = var.name_prefix
+  create_irsa                       = var.create_irsa
   irsa_iam_role_name                = var.irsa_iam_role_name
   irsa_iam_permissions_boundary_arn = var.irsa_iam_permissions_boundary_arn
   eks_oidc_provider_arn             = var.eks_oidc_provider_arn

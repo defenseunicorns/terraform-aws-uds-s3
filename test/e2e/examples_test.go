@@ -19,6 +19,7 @@ const bucketNameOutput = "bucket_id"
 
 const oidcProviderVar = "eks_oidc_provider_arn"
 const awsRegionVar = "region"
+const createIrsaVar = "create_irsa"
 
 const expectedRoleName = "terratest-irsa-role"
 const roleNameVar = "irsa_iam_role_name"
@@ -44,8 +45,6 @@ type PolicyDocumentStatementPrincipal struct {
 }
 
 func TestExampleComplete(t *testing.T) {
-	t.Parallel()
-
 	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
 
 	expectedOidcProviderArn := fmt.Sprintf("arn:aws:iam::111111111111:oidc-provider/oidc.eks.%s.amazonaws.com/id/22222222222222222222222222222222", awsRegion)
@@ -90,4 +89,37 @@ func TestExampleComplete(t *testing.T) {
 	// 3. Pull out OIDC ARN using the structs at the top and assert
 	actualOidcProviderArn := policyStruct.Statement[0].Principal.Federated
 	assert.Equal(t, actualOidcProviderArn, expectedOidcProviderArn)
+}
+
+func TestS3WithNoIRSA(t *testing.T) {
+	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
+
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: testDir,
+
+		Vars: map[string]interface{}{
+			bucketNamePrefixVar: expectedBucketPrefix,
+			awsRegionVar:        awsRegion,
+			createIrsaVar:       false,
+		},
+
+		NoColor: true,
+	})
+
+	defer terraform.Destroy(t, terraformOptions)
+
+	terraform.InitAndApply(t, terraformOptions)
+
+	// Verify bucket name
+	actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
+	assert.Contains(t, actualBucketName, expectedBucketPrefix)
+
+	// Verify no IRSA role was created
+	iamClient := aws.NewIamClient(t, awsRegion)
+	expectedRoleNameCopy := expectedRoleName
+	iamRoleOutput, err := iamClient.GetRole(&iam.GetRoleInput{
+		RoleName: &expectedRoleNameCopy,
+	})
+	assert.ErrorContains(t, err, "NoSuchEntity")
+	assert.Empty(t, iamRoleOutput)
 }

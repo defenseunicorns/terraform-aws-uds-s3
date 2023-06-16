@@ -25,6 +25,7 @@ module "s3_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
+  count  = var.create_irsa ? 1 : 0
   bucket = module.s3_bucket.s3_bucket_id
 
   policy = jsonencode({
@@ -38,7 +39,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
         ]
         Effect = "Allow"
         Principal = {
-          AWS = module.irsa.iam_role_arn
+          AWS = module.irsa[0].iam_role_arn
         }
         Resource = [
           module.s3_bucket.s3_bucket_arn,
@@ -74,6 +75,7 @@ resource "aws_s3_bucket_logging" "logging" {
 }
 
 data "aws_iam_policy_document" "irsa_policy" {
+  count = var.create_irsa ? 1 : 0
   statement {
     actions   = ["s3:ListBucket"]
     resources = [module.s3_bucket.s3_bucket_arn]
@@ -92,15 +94,17 @@ data "aws_iam_policy_document" "irsa_policy" {
 }
 
 module "irsa_policy" {
+  count   = var.create_irsa ? 1 : 0
   source  = "terraform-aws-modules/iam/aws//modules/iam-policy"
   version = "5.18.0"
 
   description = "IAM Policy for IRSA"
   name_prefix = "${var.name_prefix}-${var.policy_name_suffix}"
-  policy      = data.aws_iam_policy_document.irsa_policy.json
+  policy      = data.aws_iam_policy_document.irsa_policy[0].json
 }
 
 module "irsa" {
+  count   = var.create_irsa ? 1 : 0
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
   version = "5.18.0"
 
@@ -122,7 +126,7 @@ module "irsa" {
 }
 
 resource "aws_iam_role_policy_attachment" "irsa" {
-
-  policy_arn = module.irsa_policy.arn
-  role       = module.irsa.iam_role_name
+  count      = var.create_irsa ? 1 : 0
+  policy_arn = module.irsa_policy[0].arn
+  role       = module.irsa[0].iam_role_name
 }

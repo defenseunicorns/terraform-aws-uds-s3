@@ -13,6 +13,7 @@ linters:
     - gomnd
     - lll
     - nlreturn
+    - paralleltest
     - stylecheck
     #   - testpackage
     - varnamelen
