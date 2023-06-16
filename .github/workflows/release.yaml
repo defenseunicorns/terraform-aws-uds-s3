@@ -6,7 +6,8 @@ on:
 jobs:
   version-zarf-package:
     name: Version Zarf Package
-    uses: defenseunicorns/uds-common-workflows/.github/workflows/release-version.yaml@release
+    uses: defenseunicorns/uds-common-workflows/.github/workflows/release-terraform.yml@main
     secrets: inherit
     with:
-      working-dir: test1
+      command: manifest
+      release-type: simple
