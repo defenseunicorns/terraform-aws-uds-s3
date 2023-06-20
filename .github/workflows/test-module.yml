@@ -29,7 +29,7 @@ defaults:
 jobs:
   # Run the tests
   run-test:
-    name: Test Component
+    # name: Test Component
     # runs-on: ubuntu-latest
     # Only run when the pull request is not in draft status
     if: github.event.pull_request.draft == false
