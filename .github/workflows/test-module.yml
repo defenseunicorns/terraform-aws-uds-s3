@@ -5,17 +5,17 @@ on:
       - main
       - shared-testing
   pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - ready_for_review
-    branches:
-      - main
-    paths:
-      - "**.tf"
-      - "**.go"
-      - ".github/**"
+#     types:
+#       - opened
+#       - reopened
+#       - synchronize
+#       - ready_for_review
+#     branches:
+#       - main
+#     paths:
+#       - "**.tf"
+#       - "**.go"
+#       - ".github/**"
 
 permissions:
   id-token: write
