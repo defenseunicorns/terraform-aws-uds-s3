@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - shared-testing
   pull_request:
 #     types:
 #       - opened
@@ -43,7 +42,7 @@ jobs:
       - name: Run Shared Test workfow
         uses: defenseunicorns/uds-common-workflows/.github/actions/terraform-test@25-common-iac-test
         with:
-          test_retry: 2
+          test_retry: 1
 
 # jobs:
 #   # Run the tests
