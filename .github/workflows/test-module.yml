@@ -45,9 +45,6 @@ jobs:
 
       - name: Shared Terraform Tests
         uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-test.yml@25-common-iac-test
+        secrets: inherit
         with:
-          test_retry: 1
-
-
-
-
+          test_retry: 2
