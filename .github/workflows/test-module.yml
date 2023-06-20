@@ -34,12 +34,6 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
 
-      - name: Checkout the code
-        uses: actions/checkout@v3
-
-      - name: Initialize Pipeline
-        uses: ./.github/actions/init-pipeline
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -49,6 +43,11 @@ jobs:
           # 21600 seconds == 6 hours
           role-duration-seconds: 21600
 
-      - name: Run live infra tests
-        run: |
-          make test
+      - name: Shared Terraform Tests
+        uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-test.yml@25-common-iac-test
+        with:
+          test_retry: 1
+
+
+
+
