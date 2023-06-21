@@ -58,7 +58,7 @@ on:
 
 jobs:
   scan-terraform:
-    uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-scan.yaml@fix-scan-init
+    uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-scan.yaml@25-common-iac-test
     secrets: inherit
     with:
       soft-fail: true
