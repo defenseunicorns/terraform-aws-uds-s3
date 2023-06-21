@@ -47,3 +47,13 @@
 #         uses: ./.github/actions/pre-commit
 #         with:
 #           check-type: renovate
+
+name: Scan Terraform
+on:
+  push:
+
+jobs:
+  scan-terraform:
+    uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-scan.yaml@25-common-iac-test
+    with:
+      soft-fail: true
