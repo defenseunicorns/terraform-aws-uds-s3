@@ -23,7 +23,7 @@ permissions:
 defaults:
   run:
     # We need -e -o pipefail for consistency with GitHub Actions' default behavior
-    shell: bash -e -o pipefail {0}
+    shell: bash -e -o pipefail
 
 jobs:
   terraform-test:
