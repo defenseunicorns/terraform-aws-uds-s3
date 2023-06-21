@@ -48,10 +48,6 @@
 #         with:
 #           check-type: renovate
 
-permissions:
-  id-token: write
-  contents: read
-
 name: Scan Terraform
 on:
   push:
