@@ -59,4 +59,5 @@ jobs:
     with:
       soft-fail: true
       github-token: $GITHUB_TOKEN
+      aws-assume-role: ${{ secrets.AWS_COMMERCIAL_ROLE_TO_ASSUME }}
 
