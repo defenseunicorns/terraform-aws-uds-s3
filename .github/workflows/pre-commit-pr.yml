@@ -54,7 +54,7 @@ on:
 
 jobs:
   scan-terraform:
-    uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-scan.yaml@25-common-iac-test
+    uses: defenseunicorns/uds-common-workflows/.github/workflows/terraform-scan.yaml@main
     with:
       soft-fail: true
       github-token: $GITHUB_TOKEN
