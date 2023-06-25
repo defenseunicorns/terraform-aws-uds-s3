@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
   packages: write
   repository-projects: read
-  
+
 jobs:
   release-terraform:
     uses: defenseunicorns/uds-common-workflows/.github/workflows/release-terraform.yml@main
