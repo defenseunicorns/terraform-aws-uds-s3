@@ -1,6 +1,10 @@
-name_prefix                       = "ex-complete"
-irsa_iam_role_name                = "ex-complete-irsa-role"
-irsa_iam_permissions_boundary_arn = null
-eks_oidc_provider_arn             = null
-kms_key_arn                       = null
-force_destroy                     = true
+name_prefix   = "ex-complete" # if changed, update test
+force_destroy = true
+tags = {
+  Owner  = "UDS"
+  Repo   = "terraform-aws-uds-s3"
+}
+access_logging_enabled = false
+region                 = "us-west-2"
+create_irsa            = false
+

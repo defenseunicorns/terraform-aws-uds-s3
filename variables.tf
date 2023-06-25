@@ -61,10 +61,10 @@ variable "policy_name_suffix" {
   default     = "irsa-policy"
 }
 
-variable "kms_key_arn" {
-  type        = string
-  description = "KMS Key ARN to use for encryption"
-}
+# variable "kms_key_arn" {
+#   type        = string
+#   description = "KMS Key ARN to use for encryption"
+# }
 
 variable "access_logging_enabled" {
   description = "If true, set up access logging of the S3 bucket to a different S3 bucket, provided by the variables `logging_bucket_id` and `logging_bucket_path`. Caution: Enabling this will likely cause LOTS of access logs, as one is generated each time the bucket is accessed and Loki will be hitting the bucket a lot!"

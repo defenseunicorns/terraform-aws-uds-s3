@@ -1,6 +1,6 @@
-data "aws_kms_key" "default" {
-  key_id = var.kms_key_arn
-}
+# data "aws_kms_key" "default" {
+#   key_id = var.kms_key_arn
+# }
 
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
@@ -14,14 +14,14 @@ module "s3_bucket" {
   force_destroy           = var.force_destroy
 
   tags = var.tags
-  server_side_encryption_configuration = {
-    rule = {
-      apply_server_side_encryption_by_default = {
-        kms_master_key_id = data.aws_kms_key.default.arn
-        sse_algorithm     = "aws:kms"
-      }
-    }
-  }
+  # server_side_encryption_configuration = {
+  #   rule = {
+  #     apply_server_side_encryption_by_default = {
+  #       kms_master_key_id = data.aws_kms_key.default.arn
+  #       sse_algorithm     = "aws:kms"
+  #     }
+  #   }
+  # }
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
@@ -89,7 +89,8 @@ data "aws_iam_policy_document" "irsa_policy" {
       "kms:GenerateDataKey",
       "kms:Decrypt"
     ]
-    resources = [data.aws_kms_key.default.arn]
+    # resources = [data.aws_kms_key.default.arn]
+    resources = ["test::blank::arn"]
   }
 }
 

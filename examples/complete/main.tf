@@ -5,16 +5,10 @@ output "bucket_id" {
 module "bucket" {
   source = "../../"
 
-  name_prefix                       = var.name_prefix
-  create_irsa                       = var.create_irsa
-  irsa_iam_role_name                = var.irsa_iam_role_name
-  irsa_iam_permissions_boundary_arn = var.irsa_iam_permissions_boundary_arn
-  eks_oidc_provider_arn             = var.eks_oidc_provider_arn
-  kms_key_arn                       = module.kms_key.key_arn
-  force_destroy                     = var.force_destroy
+  name_prefix           = var.name_prefix
+  create_irsa           = var.create_irsa
+  force_destroy         = var.force_destroy
+  tags                  = var.tags
+  eks_oidc_provider_arn = "arn::blank::test"
 }
 
-module "kms_key" {
-  source  = "terraform-aws-modules/kms/aws"
-  version = "1.5.0"
-}

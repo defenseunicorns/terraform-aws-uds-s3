@@ -17,35 +17,22 @@ variable "name_prefix" {
 variable "create_irsa" {
   description = "If true, create the IAM role and policy to be used in IRSA"
   type        = bool
-  default     = true
+  default     = false
 }
-
-variable "irsa_iam_role_name" {
-  description = "IRSA role name."
-  type        = string
-  default     = "ex-complete-irsa-role"
-}
-
-variable "irsa_iam_permissions_boundary_arn" {
-  description = "IAM permissions boundary ARN."
-  type        = string
-  default     = ""
-}
-
-variable "eks_oidc_provider_arn" {
-  description = "EKS OIDC provider ARN."
-  type        = string
-  default     = ""
-}
-
-# variable "kms_key_arn" {
-#   description = "KMS key ARN."
-#   type        = string
-#   default     = ""
-# }
 
 variable "force_destroy" {
   description = "Whether or not to destroy items in the bucket when removing the bucket."
   type        = bool
   default     = true
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "bucket tags"
+}
+
+variable "access_logging_enabled" {
+  description = "If true, set up access logging of the S3 bucket to a different S3 bucket, provided by the variables `logging_bucket_id` and `logging_bucket_path`. Caution: Enabling this will likely cause LOTS of access logs, as one is generated each time the bucket is accessed and Loki will be hitting the bucket a lot!"
+  type        = bool
+  default     = false
 }
