@@ -41,6 +41,6 @@ jobs:
           role-duration-seconds: 1800
 
       - name: Run Shared Test workfow
-        uses: defenseunicorns/uds-common-workflows/.github/actions/terraform-test@main
+        uses: defenseunicorns/uds-common-workflows/.github/actions/terraform-test@feature/fix-logging-without-losing-parallelism
         with:
           test_retry: 1
