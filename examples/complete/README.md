@@ -1,4 +1,4 @@
-<!-- END_TF_DOCS --># Examples Complete
+# Examples Complete
 
 Example of how to use this S3 module. 
 
@@ -43,3 +43,4 @@ No resources.
 |------|-------------|
 | <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | n/a |
 <!-- END_TF_DOCS -->
+
