@@ -24,7 +24,7 @@ const createIrsaVar = "create_irsa"
 const expectedRoleName = "terratest-irsa-role"
 const roleNameVar = "irsa_iam_role_name"
 
-const testDir = "../../examples/complete"
+const testDir = "../examples/complete"
 
 // These structs are used to decode the IAM Role Policy Document from JSON.
 type PolicyDocument struct {

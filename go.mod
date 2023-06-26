@@ -1,4 +1,4 @@
-module test_test
+module github.com/defenseunicorns/terraform-aws-uds-s3
 
 go 1.20
 

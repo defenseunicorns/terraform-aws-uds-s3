@@ -2,8 +2,8 @@ package test_test
 
 import (
 	"context"
+	utils "github.com/defenseunicorns/terraform-aws-uds-s3/test/utils"
 	"os"
-	utils "test_test/test/utils"
 	"testing"
 	"time"
 )
