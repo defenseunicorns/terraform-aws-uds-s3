@@ -64,7 +64,7 @@ _test-all: _create-folders
 		bash -c 'git config --global --add safe.directory /app \
 			&& asdf install && cd examples/complete \
 			&& terraform init -upgrade=true \
-			&& cd ../../test/e2e \
+			&& cd ../../test \
 			&& go test -count 1 -v $(EXTRA_TEST_ARGS) .'
 
 .PHONY: test
