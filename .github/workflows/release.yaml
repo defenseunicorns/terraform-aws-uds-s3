@@ -1,13 +1,18 @@
-name: Test Workflows
+name: Release Please Merge
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+  repository-projects: read
+
 jobs:
-  version-zarf-package:
-    name: Version Zarf Package
+  release-terraform:
     uses: defenseunicorns/uds-common-workflows/.github/workflows/release-terraform.yml@main
-    secrets: inherit
     with:
       command: manifest
       release-type: simple

@@ -3,6 +3,7 @@
 This module is provide a bucket for the needs of UDS. While the original intent is create a reusable module, the existance of this may become more specilized over time.
 
 
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -15,7 +16,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.72 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.5.0 |
 
 ## Modules
 
@@ -43,6 +44,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="input_access_logging_bucket_id"></a> [access\_logging\_bucket\_id](#input\_access\_logging\_bucket\_id) | The ID of the S3 bucket to which access logs are written | `string` | `null` | no |
 | <a name="input_access_logging_bucket_prefix"></a> [access\_logging\_bucket\_prefix](#input\_access\_logging\_bucket\_prefix) | The prefix to use for all log object keys. Ex: 'logs/' | `string` | `"s3-irsa-bucket-access-logs/"` | no |
 | <a name="input_access_logging_enabled"></a> [access\_logging\_enabled](#input\_access\_logging\_enabled) | If true, set up access logging of the S3 bucket to a different S3 bucket, provided by the variables `logging_bucket_id` and `logging_bucket_path`. Caution: Enabling this will likely cause LOTS of access logs, as one is generated each time the bucket is accessed and Loki will be hitting the bucket a lot! | `bool` | `false` | no |
+| <a name="input_create_irsa"></a> [create\_irsa](#input\_create\_irsa) | If true, create the IAM role and policy to be used in IRSA | `bool` | `true` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | EKS OIDC Provider ARN e.g., arn:aws:iam::<ACCOUNT-ID>:oidc-provider/<var.eks\_oidc\_provider> | `string` | n/a | yes |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | If true, destroys all objects in the bucket when the bucket is destroyed so that the bucket can be destroyed without error. Objects that are destroyed in this way are NOT recoverable. | `bool` | `false` | no |
 | <a name="input_irsa_iam_permissions_boundary_arn"></a> [irsa\_iam\_permissions\_boundary\_arn](#input\_irsa\_iam\_permissions\_boundary\_arn) | IAM permissions boundary ARN for IRSA roles | `string` | `""` | no |
@@ -62,3 +64,4 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="output_irsa_role"></a> [irsa\_role](#output\_irsa\_role) | ARN of the IRSA Role |
 | <a name="output_s3_bucket"></a> [s3\_bucket](#output\_s3\_bucket) | S3 Bucket Name |
 <!-- END_TF_DOCS -->
+
