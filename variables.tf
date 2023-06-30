@@ -13,24 +13,6 @@ variable "create_irsa" {
   default     = true
 }
 
-variable "irsa_iam_role_name" {
-  type        = string
-  description = "IAM role name for IRSA"
-  default     = ""
-}
-
-variable "irsa_iam_role_path" {
-  description = "IAM role path for IRSA roles"
-  type        = string
-  default     = "/"
-}
-
-variable "irsa_iam_permissions_boundary_arn" {
-  description = "IAM permissions boundary ARN for IRSA roles"
-  type        = string
-  default     = ""
-}
-
 variable "eks_oidc_provider_arn" {
   description = "EKS OIDC Provider ARN e.g., arn:aws:iam::<ACCOUNT-ID>:oidc-provider/<var.eks_oidc_provider>"
   type        = string

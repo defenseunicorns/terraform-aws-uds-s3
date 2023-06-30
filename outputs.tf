@@ -3,7 +3,4 @@ output "s3_bucket" {
   value       = module.s3_bucket.s3_bucket_id
 }
 
-output "irsa_role" {
-  description = "ARN of the IRSA Role"
-  value       = var.create_irsa ? module.irsa[0].iam_role_arn : null
 }
