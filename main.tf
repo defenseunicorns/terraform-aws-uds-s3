@@ -1,3 +1,8 @@
+
+local {
+  create_irsa = var.create_irsa ? 0 : 1
+}
+
 data "aws_kms_key" "default" {
   key_id = var.kms_key_arn
 }
@@ -48,4 +53,16 @@ resource "aws_s3_bucket_logging" "logging" {
   }
 }
 
-
+module "irsa" {
+  count                             = local.create_irsa
+  source                            = "git@github.com:defenseunicorns/terraform-aws-uds-irsa?ref=irsa-migrate"
+  bucket_arn                        = module.s3_bucket.s3_bucekt_arn
+  bucket_id                         = module.s3_bucket.s3_bucekt_id
+  irsa_iam_role_name                = var.irsa_iam_role_name
+  irsa_iam_role_path                = var.irsa_iam_role_path
+  irsa_iam_permissions_boundary_arn = var.irsa_iam_permissions_boundary_arn
+  kubernetes_namespace              = var.kubernetes_namespace
+  kubernetes_service_account        = var.kubernetes_service_account
+  name_prefix                       = var.name_prefix
+  policy_name_suffix                = var.policy_name_suffix
+}
