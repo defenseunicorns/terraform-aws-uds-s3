@@ -1,6 +1,6 @@
 
 local {
-  create_irsa = var.create_irsa ? 0 : 1
+  create_irsa = var.create_irsa ? 1 : 0
 }
 
 data "aws_kms_key" "default" {
