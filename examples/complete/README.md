@@ -29,6 +29,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_create_bucket_lifecycle"></a> [create\_bucket\_lifecycle](#input\_create\_bucket\_lifecycle) | If true, create a bucket lifecycle | `bool` | `false` | no |
 | <a name="input_create_irsa"></a> [create\_irsa](#input\_create\_irsa) | If true, create the IAM role and policy to be used in IRSA | `bool` | `true` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | EKS OIDC provider ARN. | `string` | `""` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Whether or not to destroy items in the bucket when removing the bucket. | `bool` | `true` | no |
@@ -43,4 +44,3 @@ No resources.
 |------|-------------|
 | <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | n/a |
 <!-- END_TF_DOCS -->
-
