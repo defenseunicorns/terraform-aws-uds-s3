@@ -12,6 +12,21 @@ module "s3_bucket" {
   ignore_public_acls      = true
   restrict_public_buckets = true
   force_destroy           = var.force_destroy
+  lifecycle_rule = var.create_bucket_lifecycle ? [
+    {
+      id     = "ten-year-expiration"
+      status = "enabled"
+
+      transition = {
+        days          = var.transition_days
+        storage_class = "GLACIER"
+      }
+
+      expiration = {
+        days = var.expiration_days
+      }
+    }
+  ] : []
 
   tags = var.tags
   server_side_encryption_configuration = {

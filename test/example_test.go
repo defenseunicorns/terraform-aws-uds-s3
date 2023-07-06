@@ -3,6 +3,7 @@ package test_test
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"net/url"
 	"testing"
 
@@ -20,6 +21,7 @@ const bucketNameOutput = "bucket_id"
 const oidcProviderVar = "eks_oidc_provider_arn"
 const awsRegionVar = "region"
 const createIrsaVar = "create_irsa"
+const createBucketLifecycle = "create_bucket_lifecycle"
 
 const expectedRoleName = "terratest-irsa-role"
 const roleNameVar = "irsa_iam_role_name"
@@ -53,10 +55,11 @@ func TestExampleComplete(t *testing.T) {
 		TerraformDir: testDir,
 
 		Vars: map[string]interface{}{
-			bucketNamePrefixVar: expectedBucketPrefix,
-			oidcProviderVar:     expectedOidcProviderArn,
-			awsRegionVar:        awsRegion,
-			roleNameVar:         expectedRoleName,
+			bucketNamePrefixVar:   expectedBucketPrefix,
+			oidcProviderVar:       expectedOidcProviderArn,
+			awsRegionVar:          awsRegion,
+			roleNameVar:           expectedRoleName,
+			createBucketLifecycle: true,
 		},
 
 		NoColor: true,
@@ -89,6 +92,16 @@ func TestExampleComplete(t *testing.T) {
 	// 3. Pull out OIDC ARN using the structs at the top and assert
 	actualOidcProviderArn := policyStruct.Statement[0].Principal.Federated
 	assert.Equal(t, actualOidcProviderArn, expectedOidcProviderArn)
+
+	// Verify lifecycle rule
+	expectedStorageClass := "GLACIER"
+	s3Client := aws.NewS3Client(t, awsRegion)
+	input := &s3.GetBucketLifecycleConfigurationInput{
+		Bucket: &actualBucketName,
+	}
+	result, err := s3Client.GetBucketLifecycleConfiguration(input)
+	assert.Equal(t, result.Rules[0].Transitions[0].StorageClass, &expectedStorageClass)
+	assert.NoError(t, err)
 }
 
 func TestS3WithNoIRSA(t *testing.T) {
