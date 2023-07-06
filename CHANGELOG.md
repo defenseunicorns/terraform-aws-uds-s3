@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 (2023-07-06)
+
+## What's Changed
+* UDS Shared Workflow by @wirewc in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/9
+* feat: adds lifecycle rule by @UncleGedd in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/12
+
+
+**Full Changelog**: https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.2...v0.1.0
+
 ## [0.0.2](https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.1...v0.0.2) (2023-06-16)
 
 
