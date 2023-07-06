@@ -47,7 +47,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="input_create_bucket_lifecycle"></a> [create\_bucket\_lifecycle](#input\_create\_bucket\_lifecycle) | If true, create a bucket lifecycle | `bool` | `false` | no |
 | <a name="input_create_irsa"></a> [create\_irsa](#input\_create\_irsa) | If true, create the IAM role and policy to be used in IRSA | `bool` | `true` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | EKS OIDC Provider ARN e.g., arn:aws:iam::<ACCOUNT-ID>:oidc-provider/<var.eks\_oidc\_provider> | `string` | n/a | yes |
-| <a name="input_expiration_days"></a> [expiration\_days](#input\_expiration\_days) | Requires create\_bucket\_lifecycle; number of days before bucket data expires | `number` | `3650` | no |
+| <a name="input_expiration_days"></a> [expiration\_days](#input\_expiration\_days) | Requires create\_bucket\_lifecycle; number of days before bucket data expires | `number` | `365` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | If true, destroys all objects in the bucket when the bucket is destroyed so that the bucket can be destroyed without error. Objects that are destroyed in this way are NOT recoverable. | `bool` | `false` | no |
 | <a name="input_irsa_iam_permissions_boundary_arn"></a> [irsa\_iam\_permissions\_boundary\_arn](#input\_irsa\_iam\_permissions\_boundary\_arn) | IAM permissions boundary ARN for IRSA roles | `string` | `""` | no |
 | <a name="input_irsa_iam_role_name"></a> [irsa\_iam\_role\_name](#input\_irsa\_iam\_role\_name) | IAM role name for IRSA | `string` | `""` | no |

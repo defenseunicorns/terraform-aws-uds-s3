@@ -105,5 +105,5 @@ variable "transition_days" {
 variable "expiration_days" {
   description = "Requires create_bucket_lifecycle; number of days before bucket data expires"
   type        = number
-  default     = 365 * 10 # 10 years
+  default     = 365
 }
