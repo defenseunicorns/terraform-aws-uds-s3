@@ -12,6 +12,7 @@ module "bucket" {
   eks_oidc_provider_arn             = var.eks_oidc_provider_arn
   kms_key_arn                       = module.kms_key.key_arn
   force_destroy                     = var.force_destroy
+  create_bucket_lifecycle           = var.create_bucket_lifecycle
 }
 
 module "kms_key" {

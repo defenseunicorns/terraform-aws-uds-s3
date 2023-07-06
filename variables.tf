@@ -89,3 +89,21 @@ variable "force_destroy" {
   type        = bool
   default     = false
 }
+
+variable "create_bucket_lifecycle" {
+  description = "If true, create a bucket lifecycle"
+  type        = bool
+  default     = false
+}
+
+variable "transition_days" {
+  description = "Requires create_bucket_lifecycle; number of days before transitioning to cold storage"
+  type        = number
+  default     = 30
+}
+
+variable "expiration_days" {
+  description = "Requires create_bucket_lifecycle; number of days before bucket data expires"
+  type        = number
+  default     = 365 * 10 # 10 years
+}
