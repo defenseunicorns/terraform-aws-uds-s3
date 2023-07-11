@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.4 (2023-07-11)
+
+## What's Changed
+* fix: Set default empty string value for eks oidc var by @lucasrod16 in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/16
+
+## New Contributors
+* @lucasrod16 made their first contribution in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/16
+
+**Full Changelog**: https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.3...v0.0.4
+
 ## 0.0.3 (2023-07-06)
 
 ## What's Changed
