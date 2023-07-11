@@ -34,6 +34,7 @@ variable "irsa_iam_permissions_boundary_arn" {
 variable "eks_oidc_provider_arn" {
   description = "EKS OIDC Provider ARN e.g., arn:aws:iam::<ACCOUNT-ID>:oidc-provider/<var.eks_oidc_provider>"
   type        = string
+  default     = ""
 }
 
 variable "tags" {
