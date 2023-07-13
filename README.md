@@ -33,6 +33,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | [aws_iam_role_policy_attachment.irsa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_s3_bucket_logging.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging) | resource |
 | [aws_s3_bucket_policy.bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_policy.bucket_policy_irsa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_versioning.versioning](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 | [aws_iam_policy_document.irsa_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_kms_key.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) | data source |
@@ -57,6 +58,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="input_kubernetes_service_account"></a> [kubernetes\_service\_account](#input\_kubernetes\_service\_account) | Kubernetes service account for IRSA | `string` | `"default"` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Name prefix for all resources that use a randomized suffix | `string` | n/a | yes |
 | <a name="input_policy_name_suffix"></a> [policy\_name\_suffix](#input\_policy\_name\_suffix) | IAM Policy name suffix | `string` | `"irsa-policy"` | no |
+| <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | ARN of the IAM role to be used in the S3 bucket policy | `string` | `""` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to apply to all resources | `map(string)` | `{}` | no |
 | <a name="input_transition_days"></a> [transition\_days](#input\_transition\_days) | Requires create\_bucket\_lifecycle; number of days before transitioning to cold storage | `number` | `30` | no |
 
@@ -66,4 +68,3 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 |------|-------------|
 | <a name="output_irsa_role"></a> [irsa\_role](#output\_irsa\_role) | ARN of the IRSA Role |
 | <a name="output_s3_bucket"></a> [s3\_bucket](#output\_s3\_bucket) | S3 Bucket Name |
-<!-- END_TF_DOCS -->
