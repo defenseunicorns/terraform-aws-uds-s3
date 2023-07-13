@@ -28,7 +28,7 @@ Example of how to use this S3 module.
 
 | Name | Type |
 |------|------|
-| [aws_iam_policy.loki_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.test_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
 
 ## Inputs
@@ -42,6 +42,7 @@ Example of how to use this S3 module.
 | <a name="input_irsa_iam_permissions_boundary_arn"></a> [irsa\_iam\_permissions\_boundary\_arn](#input\_irsa\_iam\_permissions\_boundary\_arn) | IAM permissions boundary ARN. | `string` | `""` | no |
 | <a name="input_irsa_iam_role_name"></a> [irsa\_iam\_role\_name](#input\_irsa\_iam\_role\_name) | IRSA role name. | `string` | `"ex-complete-irsa-role"` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Prefix to use when naming resources. | `string` | `"ex-complete"` | no |
+| <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | ARN of the IAM role to be used in the S3 bucket policy | `string` | `""` | no |
 
 ## Outputs
 
