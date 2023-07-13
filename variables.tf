@@ -13,6 +13,12 @@ variable "create_irsa" {
   default     = true
 }
 
+variable "role_arn" {
+  type        = string
+  description = "ARN of the IAM role to be used in the S3 bucket policy"
+  default     = ""
+}
+
 variable "irsa_iam_role_name" {
   type        = string
   description = "IAM role name for IRSA"

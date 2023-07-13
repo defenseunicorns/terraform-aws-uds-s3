@@ -39,7 +39,7 @@ module "s3_bucket" {
   }
 }
 
-resource "aws_s3_bucket_policy" "bucket_policy" {
+resource "aws_s3_bucket_policy" "bucket_policy_irsa" {
   count  = var.create_irsa ? 1 : 0
   bucket = module.s3_bucket.s3_bucket_id
 
@@ -55,6 +55,32 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
         Effect = "Allow"
         Principal = {
           AWS = module.irsa[0].iam_role_arn
+        }
+        Resource = [
+          module.s3_bucket.s3_bucket_arn,
+          "${module.s3_bucket.s3_bucket_arn}/*"
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_s3_bucket_policy" "bucket_policy" {
+  count  = var.create_irsa ? 0 : 1
+  bucket = module.s3_bucket.s3_bucket_id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject"
+        ]
+        Effect = "Allow"
+        Principal = {
+          AWS = var.role_arn
         }
         Resource = [
           module.s3_bucket.s3_bucket_arn,

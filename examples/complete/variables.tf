@@ -1,9 +1,3 @@
-variable "region" {
-  description = "The AWS region to deploy into"
-  type        = string
-  default     = "us-east-2"
-}
-
 variable "name_prefix" {
   description = "Prefix to use when naming resources."
   type        = string
