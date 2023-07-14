@@ -12,7 +12,7 @@ import (
 const (
 	expectedBucketPrefix  = "uds-s3-test"
 	bucketNamePrefixVar   = "name_prefix"
-	bucketNameOutput      = "bucket_id"
+	bucketNameOutput      = "bucket_name"
 	createBucketLifecycle = "create_bucket_lifecycle"
 	testDir               = "../examples/complete"
 	region                = "us-west-2"

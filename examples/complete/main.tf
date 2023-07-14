@@ -1,5 +1,5 @@
-output "bucket_id" {
-  value = module.bucket.s3_bucket
+output "bucket_name" {
+  value = module.bucket.bucket_name
 }
 
 module "bucket" {
