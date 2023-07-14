@@ -7,12 +7,6 @@ variable "name_prefix" {
   }
 }
 
-variable "create_irsa" {
-  description = "If true, create the IAM role and policy to be used in IRSA"
-  type        = bool
-  default     = true
-}
-
 variable "irsa_iam_role_name" {
   type        = string
   description = "IAM role name for IRSA"
