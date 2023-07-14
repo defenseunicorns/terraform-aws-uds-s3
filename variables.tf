@@ -7,53 +7,10 @@ variable "name_prefix" {
   }
 }
 
-variable "irsa_iam_role_name" {
-  type        = string
-  description = "IAM role name for IRSA"
-  default     = ""
-}
-
-variable "irsa_iam_role_path" {
-  description = "IAM role path for IRSA roles"
-  type        = string
-  default     = "/"
-}
-
-variable "irsa_iam_permissions_boundary_arn" {
-  description = "IAM permissions boundary ARN for IRSA roles"
-  type        = string
-  default     = ""
-}
-
-variable "eks_oidc_provider_arn" {
-  description = "EKS OIDC Provider ARN e.g., arn:aws:iam::<ACCOUNT-ID>:oidc-provider/<var.eks_oidc_provider>"
-  type        = string
-  default     = ""
-}
-
 variable "tags" {
   description = "A map of tags to apply to all resources"
   type        = map(string)
   default     = {}
-}
-
-variable "kubernetes_namespace" {
-  description = "Kubernetes namespace for IRSA"
-  type        = string
-  default     = "default"
-}
-
-variable "kubernetes_service_account" {
-  description = "Kubernetes service account for IRSA"
-  type        = string
-  default     = "default"
-}
-
-// TODO: Evaluate whether we need this to be a variable
-variable "policy_name_suffix" {
-  description = "IAM Policy name suffix"
-  type        = string
-  default     = "irsa-policy"
 }
 
 variable "kms_key_arn" {
@@ -76,7 +33,7 @@ variable "access_logging_bucket_id" {
 variable "access_logging_bucket_prefix" {
   description = "The prefix to use for all log object keys. Ex: 'logs/'"
   type        = string
-  default     = "s3-irsa-bucket-access-logs/"
+  default     = "s3-bucket-access-logs/"
 }
 
 variable "force_destroy" {
