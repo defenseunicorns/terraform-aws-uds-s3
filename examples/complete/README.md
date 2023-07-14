@@ -33,5 +33,5 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | n/a |
+| <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | n/a |
 <!-- END_TF_DOCS -->
