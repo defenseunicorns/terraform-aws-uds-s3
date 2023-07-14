@@ -52,3 +52,4 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | Name | Description |
 |------|-------------|
 | <a name="output_s3_bucket"></a> [s3\_bucket](#output\_s3\_bucket) | S3 Bucket Name |
+<!-- END_TF_DOCS -->
