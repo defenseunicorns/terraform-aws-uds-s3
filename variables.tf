@@ -1,4 +1,4 @@
-variable "name_prefix" {
+<!-- END_TF_DOCS -->variable "name_prefix" {
   description = "Name prefix for all resources that use a randomized suffix"
   type        = string
   validation {
@@ -62,5 +62,5 @@ variable "expiration_days" {
 
 variable "values" {
   description = "Allows injecting variable values using Terraform controller"
-  type = any
+  type        = any
 }

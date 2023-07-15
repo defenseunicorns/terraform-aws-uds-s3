@@ -46,6 +46,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Name prefix for all resources that use a randomized suffix | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to apply to all resources | `map(string)` | `{}` | no |
 | <a name="input_transition_days"></a> [transition\_days](#input\_transition\_days) | Requires create\_bucket\_lifecycle; number of days before transitioning to cold storage | `number` | `30` | no |
+| <a name="input_values"></a> [values](#input\_values) | Allows injecting variable values using Terraform controller | `any` | n/a | yes |
 
 ## Outputs
 
@@ -53,4 +54,3 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 |------|-------------|
 | <a name="output_bucket_arn"></a> [bucket\_arn](#output\_bucket\_arn) | S3 Bucket ARN |
 | <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | S3 Bucket Name |
-<!-- END_TF_DOCS -->
