@@ -60,7 +60,11 @@ variable "expiration_days" {
   default     = 365
 }
 
-variable "values" {
-  description = "Allows injecting variable values using Terraform controller"
-  type        = any
+variable "s3_spec" {
+  type = object({
+    name_prefix             = string
+    kms_key_arn             = string
+    force_destroy           = bool
+    create_bucket_lifecycle = bool
+  })
 }
