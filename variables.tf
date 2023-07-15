@@ -1,4 +1,4 @@
-<!-- END_TF_DOCS -->variable "name_prefix" {
+variable "name_prefix" {
   description = "Name prefix for all resources that use a randomized suffix"
   type        = string
   validation {
