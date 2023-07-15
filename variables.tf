@@ -5,6 +5,8 @@ variable "name_prefix" {
     condition     = length(var.name_prefix) <= 37
     error_message = "Name Prefix may not be longer than 37 characters."
   }
+
+  default = ""
 }
 
 variable "tags" {
@@ -16,6 +18,7 @@ variable "tags" {
 variable "kms_key_arn" {
   type        = string
   description = "KMS Key ARN to use for encryption"
+  default     = ""
 }
 
 variable "access_logging_enabled" {
