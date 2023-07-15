@@ -59,3 +59,8 @@ variable "expiration_days" {
   type        = number
   default     = 365
 }
+
+variable "values" {
+  description = "Allows injecting variable values using Terraform controller"
+  type = any
+}
