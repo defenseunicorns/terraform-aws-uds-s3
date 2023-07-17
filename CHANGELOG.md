@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.5 (2023-07-17)
+
+## What's Changed
+* Refactor s3 module to remove IRSA resources by @lucasrod16 in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/20
+* fix: Trigger release-please with conventional commit structure by @lucasrod16 in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/21
+
+
+**Full Changelog**: https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.4...v0.0.5
+
 ## 0.0.4 (2023-07-11)
 
 ## What's Changed
