@@ -1,4 +1,4 @@
-Example of how to use this S3 module
+<!-- END_TF_DOCS -->Example of how to use this S3 module
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -28,6 +28,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_bucket_lifecycle"></a> [create\_bucket\_lifecycle](#input\_create\_bucket\_lifecycle) | If true, create a bucket lifecycle | `bool` | `false` | no |
+| <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy into | `string` | `"us-east-2"` | no |
 
 ## Outputs
 
