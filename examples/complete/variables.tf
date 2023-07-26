@@ -3,3 +3,9 @@ variable "create_bucket_lifecycle" {
   type        = bool
   default     = false
 }
+
+variable "region" {
+  description = "The AWS region to deploy into"
+  type        = string
+  default     = "us-east-2"
+}
