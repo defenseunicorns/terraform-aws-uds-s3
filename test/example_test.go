@@ -15,25 +15,37 @@ const (
 	bucketNameOutput      = "bucket_name"
 	createBucketLifecycle = "create_bucket_lifecycle"
 	testDir               = "../examples/complete"
-	region                = "us-west-2"
+	awsRegionVar          = "region"
 )
 
+var approvedRegions = []string{"us-east-1", "us-east-2", "us-west-1", "us-west-2"}
+
 func TestS3Module(t *testing.T) {
-	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{TerraformDir: testDir})
+	awsRegion := aws.GetRandomStableRegion(t, approvedRegions, nil)
+
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: testDir,
+		Vars: map[string]interface{}{
+			awsRegionVar: awsRegion,
+		},
+	})
 
 	defer terraform.Destroy(t, terraformOptions)
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Verify bucket exists and the name is what we expect it to be
 	actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
-	aws.AssertS3BucketExists(t, region, actualBucketName)
+	aws.AssertS3BucketExists(t, awsRegion, actualBucketName)
 	require.Contains(t, actualBucketName, expectedBucketPrefix)
 }
 
 func TestS3ModuleWithLifeCycleRule(t *testing.T) {
+	awsRegion := aws.GetRandomStableRegion(t, approvedRegions, nil)
+
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: testDir,
 		Vars: map[string]interface{}{
+			awsRegionVar:          awsRegion,
 			createBucketLifecycle: true,
 		},
 	})
@@ -43,12 +55,12 @@ func TestS3ModuleWithLifeCycleRule(t *testing.T) {
 
 	// Verify bucket exists and the name is what we expect it to be
 	actualBucketName := terraform.Output(t, terraformOptions, bucketNameOutput)
-	aws.AssertS3BucketExists(t, region, actualBucketName)
+	aws.AssertS3BucketExists(t, awsRegion, actualBucketName)
 	require.Contains(t, actualBucketName, expectedBucketPrefix)
 
 	// Verify lifecycle rule
 	expectedStorageClass := "GLACIER"
-	s3Client := aws.NewS3Client(t, region)
+	s3Client := aws.NewS3Client(t, awsRegion)
 	input := &s3.GetBucketLifecycleConfigurationInput{
 		Bucket: &actualBucketName,
 	}
