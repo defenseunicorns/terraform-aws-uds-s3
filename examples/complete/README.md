@@ -1,4 +1,4 @@
-<!-- END_TF_DOCS -->Example of how to use this S3 module
+Example of how to use this S3 module
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
