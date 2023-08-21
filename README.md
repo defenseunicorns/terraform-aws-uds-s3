@@ -2,8 +2,6 @@
 
 This module is provide a bucket for the needs of UDS. While the original intent is create a reusable module, the existance of this may become more specilized over time.
 
-
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -16,7 +14,7 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.9.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.13.1 |
 
 ## Modules
 
@@ -53,3 +51,4 @@ This module is provide a bucket for the needs of UDS. While the original intent 
 |------|-------------|
 | <a name="output_bucket_arn"></a> [bucket\_arn](#output\_bucket\_arn) | S3 Bucket ARN |
 | <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | S3 Bucket Name |
+<!-- END_TF_DOCS -->
