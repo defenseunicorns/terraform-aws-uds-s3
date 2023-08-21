@@ -3,7 +3,9 @@ component-definition:
   metadata:
     title: Terraform S3 Bucket Module
     last-modified: '2023-06-13T19:21:27Z'
-    version: "20230613"
+    # x-release-please-start-version
+    version: "0.0.5"
+    # x-release-please-end
     oscal-version: 1.0.0
     parties:
     - uuid: f3cf70f8-ba44-4e55-9ea3-389ef24847d3
