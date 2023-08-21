@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.6 (2023-08-21)
+
+## What's Changed
+* Restrict testing to US regions. by @justin-o12 in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/23
+* fix: oscal-version-match by @CloudBeard in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/25
+
+## New Contributors
+* @justin-o12 made their first contribution in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/23
+
+**Full Changelog**: https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.5...v0.0.6
+
 ## 0.0.5 (2023-07-17)
 
 ## What's Changed

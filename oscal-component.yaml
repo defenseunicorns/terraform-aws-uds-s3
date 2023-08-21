@@ -4,7 +4,7 @@ component-definition:
     title: Terraform S3 Bucket Module
     last-modified: '2023-06-13T19:21:27Z'
     # x-release-please-start-version
-    version: "0.0.5"
+    version: "0.0.6"
     # x-release-please-end
     oscal-version: 1.0.4
     parties:
