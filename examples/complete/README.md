@@ -1,4 +1,4 @@
-Example of how to use this S3 module
+<!-- END_TF_DOCS -->Example of how to use this S3 module
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -35,5 +35,4 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | n/a |
-
 <!-- END_TF_DOCS -->
