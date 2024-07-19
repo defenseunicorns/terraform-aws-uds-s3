@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.7 (2024-07-19)
+
+## What's Changed
+* ci: bump version for configure-aws-credentials by @MxNxPx in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/35
+* ci: update asdf tooling versions by @MxNxPx in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/34
+
+## New Contributors
+* @MxNxPx made their first contribution in https://github.com/defenseunicorns/terraform-aws-uds-s3/pull/35
+
+**Full Changelog**: https://github.com/defenseunicorns/terraform-aws-uds-s3/compare/v0.0.6...v0.0.7
+
 ## 0.0.6 (2023-08-21)
 
 ## What's Changed
