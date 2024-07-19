@@ -34,7 +34,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@5579c002bb4778aa43395ef1df492868a9a1c83f # v4.0.2
         with:
-          role-to-assume: ${{ secrets.AWS_COMMERCIAL_ROLE_TO_ASSUME }}
+          role-to-assume: ${{ secrets.AWS_COMMERCIAL_CI_ROLE_TO_ASSUME }}
           role-session-name: ${{ github.event.client_payload.pull_request.head.sha || github.sha }}
           aws-region: us-west-2
           # 21600 seconds == 6 hours
